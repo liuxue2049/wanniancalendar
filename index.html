@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>万年历</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <button class="theme-btn" onclick="showThemeDialog()">
+                主题: <span id="theme-name">财神</span>
+            </button>
+        </div>
+        
+        <div class="main-content">
+            <div class="calendar-section" id="calendar-section">
+                <div class="month-header">
+                    <button class="nav-btn" onclick="prevMonth()">&lt;</button>
+                    <span id="month-title">2024年1月</span>
+                    <button class="nav-btn" onclick="nextMonth()">&gt;</button>
+                </div>
+                
+                <div class="weekday-header">
+                    <span>日</span><span>一</span><span>二</span><span>三</span><span>四</span><span>五</span><span>六</span>
+                </div>
+                
+                <div class="calendar-grid" id="calendar-grid"></div>
+            </div>
+            
+            <div class="info-card">
+                <div class="info-row">
+                    <span class="hint-text">长按日期进入备忘</span>
+                    <span id="record-indicator">无记录</span>
+                </div>
+                <div class="info-row">
+                    <span id="shichen-info">子时 胆经 安睡养阳</span>
+                    <div class="huangli">
+                        <span id="huangli-yi" class="yi">宜祭祀</span>
+                        <span id="huangli-ji" class="ji">忌动土</span>
+                    </div>
+                </div>
+                <div class="festival-row">
+                    <span id="festival"></span>
+                </div>
+            </div>
+            
+            <div class="image-section">
+                <div class="image-container" id="image-container">
+                    <img id="current-image" src="" alt="节日图片">
+                </div>
+                <div class="image-indicator" id="image-indicator"></div>
+            </div>
+        </div>
+        
+        <div class="dialog-overlay" id="theme-dialog" style="display: none;">
+            <div class="dialog">
+                <h3>选择主题</h3>
+                <div class="dialog-content">
+                    <button class="dialog-btn" onclick="setTheme('caishen')">财神</button>
+                    <button class="dialog-btn" onclick="setTheme('生肖')">生肖</button>
+                </div>
+                <button class="dialog-btn cancel-btn" onclick="closeThemeDialog()">取消</button>
+            </div>
+        </div>
+        
+        <div class="dialog-overlay" id="record-dialog" style="display: none;">
+            <div class="dialog">
+                <h3 id="record-dialog-title">添加日期记录</h3>
+                <div class="dialog-content">
+                    <textarea id="record-content" placeholder="请输入记录内容"></textarea>
+                </div>
+                <div class="dialog-actions">
+                    <button class="dialog-btn confirm-btn" onclick="saveRecord()">确定</button>
+                    <button class="dialog-btn cancel-btn" onclick="closeRecordDialog()">取消</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="dialog-overlay" id="view-records-dialog" style="display: none;">
+            <div class="dialog">
+                <h3 id="view-records-title">记录列表</h3>
+                <div class="dialog-content" id="records-list"></div>
+                <div class="dialog-actions">
+                    <button class="dialog-btn delete-btn" onclick="deleteRecords()">清除</button>
+                    <button class="dialog-btn edit-btn" onclick="editRecords()">修改</button>
+                    <button class="dialog-btn confirm-btn" onclick="closeViewRecordsDialog()">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="js/calendar.js"></script>
+    <script src="js/huangli.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
